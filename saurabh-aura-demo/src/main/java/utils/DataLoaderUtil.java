@@ -2,12 +2,12 @@ package utils;
 
 import java.util.Properties;
 
-public class TestDataLoader {
+public class DataLoaderUtil {
   private static Properties testData = new Properties();
 
   static {
     try {
-      testData.load(TestDataLoader.class.getResourceAsStream("/testdata.properties"));
+      testData.load(DataLoaderUtil.class.getResourceAsStream("/testdata.properties"));
     } catch (Exception e) {
       System.out.println("Error while reading testdata.properties");
     }

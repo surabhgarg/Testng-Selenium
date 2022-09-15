@@ -2,32 +2,33 @@ package steps;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import utils.SeleniumHelper;
-import utils.TestDataLoader;
+import utils.Helper;
+
 import org.testng.Assert;
 
-import pageObjects.AccountAuthenticationPageObjects;
+import DataLoaderUtil;
+import pageObjects.AccountAuthenticationPage;
 
 public class AccountAuthenticationPageSteps {
 
   public AccountAuthenticationPageSteps(WebDriver driver) {
-    PageFactory.initElements(driver, AccountAuthenticationPageObjects.class);
+    PageFactory.initElements(driver, AccountAuthenticationPage.class);
   }
 
   public void openAuthenticationPage() {
-    new SeleniumHelper().openURL(TestDataLoader.getProperty("myAccountUrl"));
+    new Helper().openURL(DataLoaderUtil.getProperty("myAccountUrl"));
   }
 
   public void enterEmail(String email) {
-    AccountAuthenticationPageObjects.emailAddress.sendKeys(email);
+    AccountAuthenticationPage.emailAddress.sendKeys(email);
   }
 
   public void clickCreateAccButton() {
-    AccountAuthenticationPageObjects.createAccButton.click();
+    AccountAuthenticationPage.createAccButton.click();
   }
 
   public void verifyAccCreationErrorMsgIsDisplayed() {
-    boolean isErrorDisplayed = new SeleniumHelper().isElementDisplayed(AccountAuthenticationPageObjects.createAccountError, 30);
+    boolean isErrorDisplayed = new Helper().isElementDisplayed(AccountAuthenticationPage.createAccountError, 30);
     Assert.assertTrue(isErrorDisplayed, "Create account error message should be displayed");
   }
 

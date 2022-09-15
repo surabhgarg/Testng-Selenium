@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-public class CreateNewAccountPageObjects {
+public class CreateNewAccountPage {
 
   @FindBy(how = How.ID, using = "account-creation_form")
   public static WebElement formAccCreation;

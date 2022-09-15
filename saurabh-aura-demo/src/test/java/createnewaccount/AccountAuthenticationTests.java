@@ -1,14 +1,14 @@
-package createaccount;
+package createnewaccount;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import DataLoaderUtil;
 import steps.AccountAuthenticationPageSteps;
 import steps.CreateNewAccountPageSteps;
-import utils.DriverSetup;
-import utils.TestDataLoader;
+import utils.DriverSetting;
 
-public class AccountAuthenticationPageTests extends DriverSetup {
+public class AccountAuthenticationTests extends DriverSetting {
 
   @BeforeMethod
   public void openAuthenticationPage() {
@@ -17,24 +17,9 @@ public class AccountAuthenticationPageTests extends DriverSetup {
   }
 
   @Test
-  public void createAnAccountBlankEmailTest() {
-    AccountAuthenticationPageSteps authenticationPageActions = new AccountAuthenticationPageSteps(getDriver());
-    authenticationPageActions.clickCreateAccButton();
-    authenticationPageActions.verifyAccCreationErrorMsgIsDisplayed();
-  }
-
-  @Test
   public void createAnAccountInvalidEmailTest() {
     AccountAuthenticationPageSteps authenticationPageActions = new AccountAuthenticationPageSteps(getDriver());
-    authenticationPageActions.enterEmail(TestDataLoader.getProperty("invalidEmail"));
-    authenticationPageActions.clickCreateAccButton();
-    authenticationPageActions.verifyAccCreationErrorMsgIsDisplayed();
-  }
-
-  @Test
-  public void createAnAccountExistingEmailTest() {
-    AccountAuthenticationPageSteps authenticationPageActions = new AccountAuthenticationPageSteps(getDriver());
-    authenticationPageActions.enterEmail(TestDataLoader.getProperty("existingEmail"));
+    authenticationPageActions.enterEmail(DataLoaderUtil.getProperty("invalidEmail"));
     authenticationPageActions.clickCreateAccButton();
     authenticationPageActions.verifyAccCreationErrorMsgIsDisplayed();
   }
@@ -42,7 +27,7 @@ public class AccountAuthenticationPageTests extends DriverSetup {
   @Test
   public void createAnAccountValidEmailTest() {
     AccountAuthenticationPageSteps authenticationPageActions = new AccountAuthenticationPageSteps(getDriver());
-    authenticationPageActions.enterEmail(TestDataLoader.getProperty("validEmail"));
+    authenticationPageActions.enterEmail(DataLoaderUtil.getProperty("validEmail"));
     authenticationPageActions.clickCreateAccButton();
     CreateNewAccountPageSteps createAccountPageActions = new CreateNewAccountPageSteps(getDriver());
     createAccountPageActions.verifyAccountCreationFormIsDisplayed();
