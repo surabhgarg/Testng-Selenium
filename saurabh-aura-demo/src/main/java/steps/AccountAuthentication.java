@@ -2,21 +2,19 @@ package steps;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import utils.Helper;
-
 import org.testng.Assert;
 
-import DataLoaderUtil;
 import pageObjects.AccountAuthenticationPage;
+import utils.Helper;
 
-public class AccountAuthenticationPageSteps {
+public class AccountAuthentication {
 
-  public AccountAuthenticationPageSteps(WebDriver driver) {
+  public AccountAuthentication(WebDriver driver) {
     PageFactory.initElements(driver, AccountAuthenticationPage.class);
   }
 
   public void openAuthenticationPage() {
-    new Helper().openURL(DataLoaderUtil.getProperty("myAccountUrl"));
+    new Helper().openURL(utils.DataLoaderUtil.getProperty("myAccountUrl"));
   }
 
   public void enterEmail(String email) {

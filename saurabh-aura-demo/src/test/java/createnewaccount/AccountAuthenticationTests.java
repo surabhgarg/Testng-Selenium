@@ -3,33 +3,32 @@ package createnewaccount;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import DataLoaderUtil;
-import steps.AccountAuthenticationPageSteps;
-import steps.CreateNewAccountPageSteps;
+import steps.AccountAuthentication;
+import steps.CreateNewAccount;
 import utils.DriverSetting;
 
 public class AccountAuthenticationTests extends DriverSetting {
 
   @BeforeMethod
   public void openAuthenticationPage() {
-    AccountAuthenticationPageSteps authenticationPageActions = new AccountAuthenticationPageSteps(getDriver());
-    authenticationPageActions.openAuthenticationPage();
+    AccountAuthentication AccountAuthentication = new AccountAuthentication(getDriver());
+    AccountAuthentication.openAuthenticationPage();
   }
 
   @Test
   public void createAnAccountInvalidEmailTest() {
-    AccountAuthenticationPageSteps authenticationPageActions = new AccountAuthenticationPageSteps(getDriver());
-    authenticationPageActions.enterEmail(DataLoaderUtil.getProperty("invalidEmail"));
-    authenticationPageActions.clickCreateAccButton();
-    authenticationPageActions.verifyAccCreationErrorMsgIsDisplayed();
+    AccountAuthentication AccountAuthentication = new AccountAuthentication(getDriver());
+    AccountAuthentication.enterEmail(utils.DataLoaderUtil.getProperty("invalidEmail"));
+    AccountAuthentication.clickCreateAccButton();
+    AccountAuthentication.verifyAccCreationErrorMsgIsDisplayed();
   }
 
   @Test
   public void createAnAccountValidEmailTest() {
-    AccountAuthenticationPageSteps authenticationPageActions = new AccountAuthenticationPageSteps(getDriver());
-    authenticationPageActions.enterEmail(DataLoaderUtil.getProperty("validEmail"));
-    authenticationPageActions.clickCreateAccButton();
-    CreateNewAccountPageSteps createAccountPageActions = new CreateNewAccountPageSteps(getDriver());
-    createAccountPageActions.verifyAccountCreationFormIsDisplayed();
+    AccountAuthentication AccountAuthentication = new AccountAuthentication(getDriver());
+    AccountAuthentication.enterEmail(utils.DataLoaderUtil.getProperty("validEmail"));
+    AccountAuthentication.clickCreateAccButton();
+    CreateNewAccount CreateNewAccount = new CreateNewAccount(getDriver());
+    CreateNewAccount.verifyAccountCreationFormIsDisplayed();
   }
 }
