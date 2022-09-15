@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name = "Create An Account Tests">
+  <test name = "Authentication Page Tests" parallel = "methods" thread-count="3">
+    <classes>
+      <class name = "createaccount.AuthenticationPageTests" />
+    </classes>
+  </test>
+  <test name = "Create account Page Tests" parallel = "methods" thread-count="3">
+    <classes>
+      <class name = "createaccount.CreateAccountPageTests" />
+    </classes>
+  </test>
+</suite>
